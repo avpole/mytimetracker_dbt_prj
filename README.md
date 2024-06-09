@@ -17,9 +17,11 @@ Docker + Docker Compose - для создания среды работы реш
 
 Установка в Docker Compose https://docs.airbyte.com/deploying-airbyte/docker-compose
 
+
 ## Установка других систем окружения
 
  Оставшиеся системы устанавливаются в Docker Compose и сконфигурированы в [Docker containers](./docker-compose.yml).
+
 
 ## Конфигурирвоание Airbyte pipeline для загрузки данных в DWH
 
@@ -31,6 +33,7 @@ Airbyte pipeline настройки
 
 Пример работы pipeline
 ![История Airbyte pipeline](./docs/airbyte_pipeline_history.png)
+
 
 ## Трасформация исходных данных
 
@@ -54,6 +57,7 @@ mart_person_activity_hour_facts - расчитывается витрина да
 
 Модель описана [Cube model](./model/cubes/personactivity_cube_model.yml)
 ![Cube модель измерений и метрик](./docs/cube_metrics_model.png)
+
 
 ## Визуализация на dashboard Metabase
 
