@@ -24,4 +24,11 @@ Docker + Docker Compose - для создания среды работы реш
 
 ## Конфигурирвоание Airbyte pipeline для загрузки данных в DWH
 
+Загрука построена по incremental стратегию
+
 ![Схема таблиц источника данных](./docs/source_data_schema.png)
+
+![Настройки Airbyte src]
+![Настройки Airbyte dest]
+
+![Настройки Airbyte pipeline]
