@@ -49,6 +49,7 @@
 
 ## Конфигурирвоание Airbyte pipeline для загрузки данных в DWH
 
+Схема таблиц источника данных
 ![Схема таблиц источника данных](./docs/source_data_schema.png)
 
 Airbyte pipeline настройки
