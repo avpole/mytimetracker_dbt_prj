@@ -1,7 +1,7 @@
 target/
 dbt_packages/
 logs/
-
+cubesschema/
 
 .DS_Store
 
