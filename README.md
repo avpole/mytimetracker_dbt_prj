@@ -50,13 +50,16 @@
 ## Конфигурирвоание Airbyte pipeline для загрузки данных в DWH
 
 Схема таблиц источника данных
+
 ![Схема таблиц источника данных](./docs/source_data_schema.png)
 
 Airbyte pipeline настройки
 Загрука построена по incremental стратегии
+
 ![Настройки Airbyte pipeline](./docs/airflow_pipeline_settings.png)
 
 Пример работы pipeline
+
 ![История Airbyte pipeline](./docs/airbyte_pipeline_history.png)
 
 
@@ -110,7 +113,8 @@ mart_person_activity_hour_facts - расчитывается витрина да
 
     Можно реализовать с помощью разбора через regexp выражения или сделать с помощью сервисов ИИ.
 
-    Пример разбора текста в заголовке окна от ChatGPT
+    Пример разбора текста заголовка активного окна пользователя от ChatGPT
+    
     ![Пример разбора от ChatGPT](./docs/chatgpt_analyze_windowstitle_example.png)
 
 - С помощью данного проекта доработать полученние от сервиса информации и её загрузку в DWH в структурированном виде для дальнейшего обогащения данных для анализа и визуализации.
