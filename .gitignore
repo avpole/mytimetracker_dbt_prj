@@ -1,0 +1,13 @@
+target/
+dbt_packages/
+logs/
+
+
+.DS_Store
+
+.cubestore/
+
+.env
+
+package-lock.yml
+stg_singletracks_dedup_test.sql

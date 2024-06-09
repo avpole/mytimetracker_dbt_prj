@@ -1,0 +1,44 @@
+name: 'mytimetracker_dbt_prj'
+version: '1.0.0'
+config-version: 2
+
+require-dbt-version: [">=1.2.0", "<2.0.0"]
+
+profile: 'mytimetracker_dbt_prj'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["data_tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+models:
+
+  mytimetracker_dbt_prj:
+    +materialized: table
+    +enabled: true
+
+    staging:
+      +tags: ["staging"]
+
+    intermediate:
+      +tags: ["intermediate"]
+
+    marts:
+      +tags: ["marts"]
+
+vars:
+  normalized_at_column: '_airbyte_normalized_at'
+
+
+flags:
+    send_anonymous_usage_stats: False
+    use_colors: True
+    partial_parse: True

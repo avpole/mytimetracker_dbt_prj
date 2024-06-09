@@ -1,0 +1,17 @@
+
+
+mytimetracker_dbt_prj:
+
+  target: dev
+
+  outputs:
+    dev:
+      type: postgres
+      threads: 1
+      host: postgres_mytt
+      port: 5432
+      user: postgres
+      pass: postgres
+      dbname: dwh_mytt
+      schema: public
+  

@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+    - name: timetracker
+      database: dwh_mytt
+      schema: public
+      description: timetracker dimensions and facts
+      tags: ['timetracker']
+      tables:
+        - name: applicationmatchingmodels
+          identifier: applicationmatchingmodels             
+        - name: peoplematchingmodels
+          identifier: peoplematchingmodels                
+        - name: personalgroups
+          identifier: personalgroups               
+        - name: sidpersonalgroups
+          identifier: sidpersonalgroups             
+        - name: singletracks
+          identifier: singletracks
+
+    

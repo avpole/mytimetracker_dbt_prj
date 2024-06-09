@@ -1,0 +1,28 @@
+version: 2
+
+models:
+
+  - name: stg_singletracks_dedup
+    description: single tracks deduplicated
+    columns:
+      - name: st_id
+        description: primary key
+        tests:
+          - not_null
+          - unique
+      - name: tracktime
+        description: Datetime
+        tests:
+          - not_null
+      - name: processfilepath
+        description: string
+        tests:
+          - not_null
+
+  - name: stg_applications_by_processfilepath
+    description: found aplications by processfilepath
+    columns:
+      - name: processfilepath
+        description: string
+        tests:
+          - not_null

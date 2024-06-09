@@ -1,0 +1,85 @@
+cubes:
+  - name: personactivity_cube_model
+    sql_table: mart_person_activity_hour_facts
+
+    dimensions:
+
+      - name: Tracktime
+        sql: activity_hour
+        type: time
+
+      - name: Person_name
+        sql: personname
+        type: string
+
+      - name: Group_name
+        sql: persongroupname
+        type: string
+
+      - name: Computer_name
+        sql: pcname
+        type: string
+
+      - name: Login_name
+        sql: username
+        type: string
+
+      - name: Application_name
+        sql: nameapplication
+        type: string
+
+      - name: Group_name
+        sql: persongroupname
+        type: string
+
+      - name: Application_type
+        sql: typeapplication
+        type: string
+
+      - name: Activity_status
+        sql: systemstatus
+        type: string
+
+    measures:
+
+      - name: Activity_minutes_sum
+        sql: activity_minutes_sum
+        type: sum
+
+      - name: Activity_hours_sum
+        sql: 'round({CUBE.Activity_minutes_sum}/60, 2)'
+        type: number
+
+      - name: Activity_count
+        sql: activity_count
+        type: count
+
+  # - name: personalgroups_cube
+  #   sql_table: personalgroups
+
+  #   joins:
+  #     - name: personactivity_cube_model
+  #       relationship: one_to_many
+  #       sql: stg_person_activity.personalgroupid = personalgroups.Id
+
+  #   measures:
+  #     - name: group_activity_minutes_sum
+  #       sql: "{activity_minutes_sum}"
+  #       type: sum
+
+  #   dimensions:
+  #     - name: groupid
+  #       sql: Id
+  #       type: string
+  #       primary_key: true
+
+  #     - name: Name
+  #       sql: Name
+  #       type: string
+
+  #     - name: activity_minutes_sum
+  #       sql: "{personactivity_cube_model.activity_minutes_sum}"
+  #       type: number
+  #       sub_query: true
+
+    dataSource: default

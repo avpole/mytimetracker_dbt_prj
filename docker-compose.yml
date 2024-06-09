@@ -1,0 +1,57 @@
+services:
+
+  devcontainer:
+    build:
+      context: .
+    volumes:
+      - .:/workspaces/mytimetracker_dbt_prj/
+    ports:
+      - 8080:8080
+    networks:
+        - mytt_net
+    env_file:
+      - .env 
+
+  postgres_mytt:
+      image: postgres
+      hostname: postgres_mytt
+      volumes:
+      - ./pg-init-scripts:/docker-entrypoint-initdb.d
+      environment: 
+        POSTGRES_MULTIPLE_DATABASES: dwh_mytt, metabaseappdb
+        POSTGRES_USER: ${DB_USER}
+        POSTGRES_PASSWORD: ${DB_PASSWORD}
+      ports:
+        - 6432:5432
+      networks:
+        - mytt_net
+
+  metabase:
+      image: metabase/metabase:latest
+      hostname: metabase
+      environment:
+        MB_DB_TYPE: postgres
+        MB_DB_DBNAME: metabaseappdb
+        MB_DB_PORT: 5432
+        MB_DB_USER: ${DB_USER}
+        MB_DB_PASS: ${DB_PASSWORD}
+        MB_DB_HOST: postgres_mytt
+      ports: 
+        - 3000:3000
+      networks:
+        - mytt_net
+
+  cube:
+    image: cubejs/cube:latest
+    ports:
+      - 4000:4000
+      - 15432:15432
+    env_file:
+      - .env      
+    volumes:
+      - .:/cube/conf
+    networks:
+      - mytt_net
+    
+networks:
+  mytt_net:
