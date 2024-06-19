@@ -69,7 +69,7 @@
 Airbyte pipeline настройки
 Загрука построена по incremental стратегии
 
-![Настройки Airbyte pipeline](./docs/airflow_pipeline_settings.png)
+![Настройки Airbyte pipeline](./docs/airbyte_pipeline_settings.png)
 
 Пример работы pipeline
 
