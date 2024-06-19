@@ -12,12 +12,14 @@ with process as (
 )
 , apps as (
     select distinct
-        lower(processfile) as processfile
-	    , '\\' || lower(processfile) as processfile_pattern
+        lower(processfilepath) as processfile
+	    , '\\' || lower(processfilepath) as processfile_pattern
         , nameapplication
         , typeapplication
-        , row_number() over (partition by processfile order by nameapplication) as row_number
-    from {{ source('timetracker', 'applicationmatchingmodels') }}
+        , activity_category
+        , activity_type
+        , row_number() over (partition by processfilepath order by {{ var("normalized_at_column") }} desc) as row_number
+    from {{ source('timetracker', 'apps_analyzed_gptchat') }}
 )
 , appdedup as (
     select 
@@ -30,6 +32,8 @@ with process as (
         , processfile_pattern
         , nameapplication
         , typeapplication
+        , activity_category
+        , activity_type
     from apps
     where row_number = 1
 )
@@ -41,5 +45,7 @@ select
     , ad.nameapplication
     , ad.typeapplication
     , p.processfilepath
+    , ad.activity_category
+    , ad.activity_type
 from process as p
     left join appdedup as ad on lower(p.processfilepath) like '%' || lower(ad.processfile_pattern) || '%' 

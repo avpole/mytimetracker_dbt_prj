@@ -24,14 +24,26 @@ cubes:
         sql: username
         type: string
 
-      - name: Application_name
-        sql: nameapplication
-        type: string
-
       - name: Group_name
         sql: persongroupname
         type: string
 
+      - name: Application_name
+        sql: nameapplication
+        type: string
+      
+      - name: Application_type
+        sql: typeapplication
+        type: string
+
+      - name: Activity_category
+        sql: activity_category
+        type: string
+
+      - name: Activity_type
+        sql: activity_type
+        type: string
+      
       - name: Application_type
         sql: typeapplication
         type: string

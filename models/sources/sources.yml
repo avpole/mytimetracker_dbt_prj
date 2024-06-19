@@ -17,5 +17,7 @@ sources:
           identifier: sidpersonalgroups             
         - name: singletracks
           identifier: singletracks
+        - name: apps_analyzed_gptchat
+          identifier: apps_analyzed_gptchat
 
     

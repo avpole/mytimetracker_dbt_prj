@@ -17,6 +17,8 @@ with pahf as (
       , workspaceid
       , nameapplication
       , typeapplication
+      , activity_category
+      , activity_type
       , persongroupname
       , count(*) as activity_count
       , sum(activity_interval) as activity_seconds_sum
@@ -39,6 +41,8 @@ with pahf as (
       , workspaceid
       , nameapplication
       , typeapplication
+      , activity_category
+      , activity_type
       , persongroupname
 )
 , pahf_with_key as (
@@ -51,6 +55,8 @@ with pahf as (
             , 'workspaceid'
             , 'nameapplication'
             , 'typeapplication'
+            , 'activity_category'
+            , 'activity_type'
             , 'persongroupname'
       ]) }} as activity_id
       , *

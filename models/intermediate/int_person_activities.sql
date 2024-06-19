@@ -22,6 +22,8 @@ select
     , apps.nameapplication
     , apps.typeapplication
     , apps.app_id
+    , apps.activity_category
+    , apps.activity_type
 
     , spg.personalgroupid
     , pg."Name" as persongroupname
